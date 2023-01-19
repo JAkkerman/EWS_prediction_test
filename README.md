@@ -1,1 +1,6 @@
-# EWS_prediction_test
+## Prediction testing for Early Warning Signals
+
+This repository contains code to test a set of Early Warning Signals for tipping points in complex systems. These tests were conduced for the MSc course _Econometric Research_ at the Free University of Amsterdam. This repository is constructed as follows:
+
+* `simulations`: this folder contains the code to simulate the dynamical systems.
+* `test`: this folder contains the code to test prediction results.
