@@ -10,7 +10,7 @@ class Simulator:
     def __init__(self, n_per_model:int, frac_bifurcate:float, tmax:int, seed:int, 
                  standard_params:bool):
 
-        assert 0 <= frac_bifurcate <= 1., "bifurcation fracton must lie in [0, 1]"
+        assert 0 <= frac_bifurcate <= 1., "bifurcation fraction must lie in [0, 1]"
 
         self.name = ''                                          # Name of model
         self.n_per_model = n_per_model                          # Number of simulations per model
@@ -20,14 +20,14 @@ class Simulator:
         self.seed = seed                                        # Seed used by numpy random generator
         self.standard_params = standard_params                  # Use only standard parameters given by model, or stochastic range of forcer
 
-        self.timeseries = None
+        self.timeseries = None                                  # Array that holds the time series
 
-        self.f_min = None
-        self.f_bif_min = None
-        self.f_max = None
-        self.f_patch = None
-        self.f_range_bif = None
-        self.f_range_nobif = None
+        self.f_min = None                                       # Minimum value of forcer variable range
+        self.f_bif_min = None                                   # Minimum value where forcer variable causes bifurcation
+        self.f_max = None                                       # Maximum value of forcer variable range
+        self.f_patch = None                                     # Patch between range of forcer used for bifurcation and nonbifurcation 
+        self.f_range_bif = None                                 # Array that holds forcer range for bifurcation
+        self.f_range_nobif = None                               # Array that holds forcer range for nonbifurcation
 
 
     def generate_timeseries(self):
