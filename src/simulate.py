@@ -136,7 +136,7 @@ class RosenMac(Simulator):
 if __name__ == "__main__":
 
     # Set parameters used in simulation
-    n_per_model = 10
+    n_per_model = 100
     frac_bifurcate = 0.5
     tmax = 500
     dt = 0.1
@@ -145,9 +145,9 @@ if __name__ == "__main__":
 
     # Generate simulator objects
     simulators = [
-                    May(n_per_model, frac_bifurcate, tmax, dt, seed, standard_params=standard_params),
+                    # May(n_per_model, frac_bifurcate, tmax, dt, seed, standard_params=standard_params),
                     Ricker(n_per_model, frac_bifurcate, tmax, seed, standard_params=standard_params),
-                    RosenMac(n_per_model, frac_bifurcate, tmax, dt, seed, standard_params=standard_params)
+                    # RosenMac(n_per_model, frac_bifurcate, tmax, dt, seed, standard_params=standard_params)
                  ]
     
     # Generate simulation data and save time series
