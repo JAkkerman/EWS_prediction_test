@@ -19,6 +19,8 @@ class Indicator:
         self.indicator = None
         self.results = None
 
+        self.open_data()
+
     def open_data(self):
         
         # Open csv containing simulated data
@@ -26,7 +28,6 @@ class Indicator:
 
         # Generate data structures for timeseries, indicator and results
         self.timeseries = df[df.columns[1:]]
-        # self.indicator = np.zeros((df.shape[0], df.shape[1] - 1))
         self.results = np.zeros((df.shape[0], 2))
         self.results[:, 0] = df[df.columns[0]].to_numpy()
 
@@ -48,20 +49,30 @@ class Variance(Indicator):
         super().__init__(to_test, seed, rolling_window)
         self.name = 'var'
 
-        self.open_data()
-
     def compute_indicator(self):
         self.indicator = self.timeseries.rolling(window=int(self.rolling_window * self.timeseries.shape[1]), axis=1).var()
 
 
+class AutoCorr(Indicator):
+    def __init__(self, to_test:str, seed:int, rolling_window:float, lag:int=1):
+        super().__init__(to_test, seed, rolling_window)
+        self.name = 'autocorr'
+        self.lag = lag
+
+    def compute_indicator(self):
+        self.indicator = self.timeseries.rolling(window=int(self.rolling_window * self.timeseries.shape[1]), 
+                                                 axis=1).apply(lambda x: x.autocorr(lag=self.lag), raw=False)
+        
+
 if __name__ == "__main__":
 
-    to_test = 'Ricker'
+    to_test = 'Rosen-Mac'
     seed = 1234
     rolling_window = 0.25
 
     indicators = [
-                    Variance(to_test, seed, rolling_window)
+                    Variance(to_test, seed, rolling_window),
+                    AutoCorr(to_test, seed, rolling_window)
                  ]
 
     for indicator in indicators:

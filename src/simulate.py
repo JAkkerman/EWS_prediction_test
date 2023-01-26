@@ -72,7 +72,7 @@ class May(Simulator):
         self.timeseries = np.zeros((n_per_model, 1 + int(tmax / dt)))
         self.f_min = 0.15
         self.f_bif_min = 0.27
-        self.f_max = 0.7
+        self.f_max = 0.4
         self.f_patch = 0.01
 
         # Set up standard forcing parameter (h) ranges as used by default in ewstools package
@@ -95,7 +95,7 @@ class Ricker(Simulator):
         self.timeseries = np.zeros((n_per_model, 1 + tmax))
         self.f_min = 0.
         self.f_bif_min = 2.7
-        self.f_max = 6.
+        self.f_max = 4.
         self.f_patch = 0.3
 
         # Set up standard forcing parameter (F) ranges as used by default in ewstools package
@@ -139,7 +139,7 @@ if __name__ == "__main__":
     n_per_model = 10
     frac_bifurcate = 0.5
     tmax = 500
-    dt = 0.01
+    dt = 0.1
     seed = 1234
     standard_params = False
 
