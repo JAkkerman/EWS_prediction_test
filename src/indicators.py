@@ -8,7 +8,7 @@ from helpers import plot_indicators
 
 class Indicators:
     def __init__(self, to_test:str, seed:int, rolling_window:float, bifurcation_threshold:float,
-                 pred_interval_max:float=0.8, pred_interval_size:float=0.2):
+                 pred_interval_max:float=0.9, pred_interval_size:float=0.2):
         
         assert 0. <= rolling_window <= 1., 'Rolling window must lie in [0, 1].'
 
@@ -116,4 +116,4 @@ if __name__ == "__main__":
         indicator.compute_indicators()
         indicator.compute_results()
     # plot_indicators(indicators, bifurcation_thresholds)
-    
+
